@@ -154,13 +154,7 @@ LATEST_RELEASE=""
 GLOBAL_OS_PACKAGES="mate-desktop "
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Define linux only packages
-LINUX_OS_PACKAGES="mate-desktop"
-ARCH_OS_PACKAGES+="mate-tweak mate-applet-dock mate-applet-streamer mate-applets mate-backgrounds "
-ARCH_OS_PACKAGES+="mate-notification-daemon mate-panel mate-polkit mate-power-manager mate-screensaver mate-sensors-applet "
-ARCH_OS_PACKAGES+="mate-calc mate-common mate-control-center mate-icon-theme mate-icon-theme-faenza mate-media mate-menus mate-netbook "
-ARCH_OS_PACKAGES+="mate-session-manager mate-settings-daemon mate-system-monitor mate-terminal mate-themes mate-user-guide mate-user-share mate-utils "
-DEBIAN_OS_PACKAGES="mate-desktop-environment*"
-UBUNTU_OS_PACKAGES="mate-desktop-environment*"
+LINUX_OS_PACKAGES=""
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Define MacOS only packages
 MAC_OS_PACKAGES=""
@@ -213,9 +207,11 @@ __run_post_install() {
     echo "Updated on: $(date)" >"$APPDIR/.installed"
   else
     if __cmd_exists dconf && [ -f "$APPDIR/mate.ini" ]; then
+      sudo iconmgr install --all
+      sudo fontmgr install --all
+      sudo thememgr install --all
       dconf dump /org/mate/ >"$APPDIR/mate.ini.bak"
-      dconf reset -f /org/mate/
-      dconf load -f /org/mate/ <"$APPDIR/mate.ini"
+      dconf reset -f /org/mate/ && __cp_rf "$INSTDIR/etc/." "$APPDIR/" && dconf load -f /org/mate/ <"$APPDIR/mate.ini"
     fi
     echo "Installed on: $(date)" >"$APPDIR/.installed"
   fi
