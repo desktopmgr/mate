@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Name[en_US]=Terminal
+Exec=myterminal
+Icon=org.xfce.terminal
+Icon[en_US]=org.xfce.terminal
+Name=terminal
