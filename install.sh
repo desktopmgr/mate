@@ -154,7 +154,13 @@ LATEST_RELEASE=""
 GLOBAL_OS_PACKAGES="mate-desktop "
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Define linux only packages
-LINUX_OS_PACKAGES=""
+LINUX_OS_PACKAGES="mate-desktop"
+ARCH_OS_PACKAGES+="mate-tweak mate-applet-dock mate-applet-streamer mate-applets mate-backgrounds "
+ARCH_OS_PACKAGES+="mate-notification-daemon mate-panel mate-polkit mate-power-manager mate-screensaver mate-sensors-applet "
+ARCH_OS_PACKAGES+="mate-calc mate-common mate-control-center mate-icon-theme mate-icon-theme-faenza mate-media mate-menus mate-netbook "
+ARCH_OS_PACKAGES+="mate-session-manager mate-settings-daemon mate-system-monitor mate-terminal mate-themes mate-user-guide mate-user-share mate-utils "
+DEBIAN_OS_PACKAGES="mate-desktop-environment*"
+UBUNTU_OS_PACKAGES="mate-desktop-environment*"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Define MacOS only packages
 MAC_OS_PACKAGES=""
